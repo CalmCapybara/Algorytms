@@ -13,23 +13,28 @@ public class BagAlgorithm {
         int bagWeight = scanner.nextInt();
         int goldCount = scanner.nextInt();
 
-        int[] goldWeight = new int[goldCount + 1];
+        int[] goldWeight = new int[goldCount];
         for (int i = 0; i < goldCount; i++) {
             goldWeight[i] = scanner.nextInt();
         }
 
-        boolean[] counts = new boolean[bagWeight];
-        Arrays.fill(counts, false);
-        counts[0] = true;
+        int[] counts = new int[bagWeight+1];
+        Arrays.fill(counts, 0);
+        counts[0] = 1;
 
         for (int nominal : goldWeight) {
-            for (int j = nominal; j <= bagWeight; j++) {
-                counts[j] = j - nominal >= 0 && counts[j - nominal];
+            for (int i = bagWeight; i >= nominal ; i--) {
+                if(counts[i - nominal] == 1) counts[i] = 1;
+
             }
         }
+        for (int count : counts) {
+            System.out.print(count + " ");
+        }
+        System.out.println("");
 
         int i = counts.length - 1;
-        while (!counts[i]) i++;
+        while (counts[i] == 0) i--;
         System.out.println(i);
     }
 }
