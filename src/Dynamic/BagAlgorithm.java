@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class BagAlgorithm {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         new BagAlgorithm().run();
     }
 
@@ -13,8 +13,8 @@ public class BagAlgorithm {
         int bagWeight = scanner.nextInt();
         int goldCount = scanner.nextInt();
 
-        int[] goldWeight = new int[goldCount];
-        for (int i = 0; i < goldWeight.length; i++) {
+        int[] goldWeight = new int[goldCount + 1];
+        for (int i = 0; i < goldCount; i++) {
             goldWeight[i] = scanner.nextInt();
         }
 
